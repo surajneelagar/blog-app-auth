@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog App</title>
+</head>
+<body>
+    <h1><a href="{{ url_for('index') }}">My Blog</a></h1>
+    {% if current_user.is_authenticated %}
+        <p>Welcome, {{ current_user.username }} | 
+        <a href="{{ url_for('logout') }}">Logout</a></p>
+    {% else %}
+        <p><a href="{{ url_for('login') }}">Login</a> | 
+        <a href="{{ url_for('register') }}">Register</a></p>
+    {% endif %}
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p style="color: red;">{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>
