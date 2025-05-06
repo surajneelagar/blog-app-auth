@@ -1,0 +1,9 @@
+flask
+flask_sqlalchemy
+flask_login
+gunicorn
+werkzeug
+
+
+
+# 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
